@@ -3,6 +3,9 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
+// Fucntions are ready for use
+// Need to doublecheck for imputs in methods make sure cannot crash app
+
 namespace MySharedClipboard
 {
     class Crypto

@@ -11,6 +11,8 @@ using System.Diagnostics;
 using Extensions;
 using System.Net.Http;
 
+// Need to adjust to increase download/upload speeds, when using found pretty slow
+
 namespace MySharedClipboard
 {
     class Onedrive
