@@ -22,8 +22,8 @@ namespace MySharedClipboard
             Consumer,
             Business
         }
-        private const int UploadDownloadChunkSize = 1 * 640 * 1024;       // 10 MB
-        private const int DownloadDownloadChunkSize = 1 * 640 * 1024;       // 10 MB
+        private const int UploadDownloadChunkSize = 5 * 640 * 1024;      // Max slice size must be a multiple of 320 KiB
+        private const int DownloadDownloadChunkSize = 5 * 640 * 1024;    
 
 
         private GraphServiceClient graphClient { get; set; }
@@ -148,9 +148,9 @@ namespace MySharedClipboard
                     .Request()
                     .PostAsync();
 
-                // Max slice size must be a multiple of 320 KiB
+                
 
-                int maxSliceSize = UploadDownloadChunkSize; //320 * 1024;
+                int maxSliceSize = UploadDownloadChunkSize;
                 var fileUploadTask =
                     new LargeFileUploadTask<DriveItem>(uploadSession, fileStream, maxSliceSize);
 
@@ -226,18 +226,13 @@ namespace MySharedClipboard
 
         public async Task getDownload2(String SelectedItem)
         {
-            // Based on question by Pavan Tiwari, 11/26/2012, and answer by Simon Mourier
+            // Some of this code is based on question by Pavan Tiwari, 11/26/2012, and answer by Simon Mourier
             // https://stackoverflow.com/questions/13566302/download-large-file-in-small-chunks-in-c-sharp
             if (null == this.graphClient) return;
 
             long ChunkSize = DownloadDownloadChunkSize;
             long offset = 0;         // cursor location for updating the Range header.
             byte[] bytesInStream;
-
-
-            int BufferSize = 4096;
-
-            byte[] byteBuffer = new byte[4096];
             long Progress = 0;
             Label lb = (Label)System.Windows.Forms.Application.OpenForms["Form1"].Controls.Find("label4", false).FirstOrDefault();
 
@@ -376,7 +371,7 @@ namespace MySharedClipboard
         /// OneDrive Error messages:
         private static void PresentServiceException(Exception exception)
         {
-            string message = null;
+            string message = "";
             var oneDriveException = exception as ServiceException;
             if (oneDriveException == null)
             {

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Specialized;
 using System.Deployment.Application;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,7 +26,6 @@ namespace MySharedClipboard
         // DO work progress bar
         private void ShowWork(bool working)
         {
-            this.UseWaitCursor = working;
             this.progressBar1.Visible = working;
         }
         // Changes UI to hide sign in and sign out based on status
@@ -86,7 +86,7 @@ namespace MySharedClipboard
             richTextBox1.Text = await onedrive.OnedriveFileText("Notes.txt");
             if (label1.Text.Equals(""))
             {
-                StaticHelpers.Alert("Error Detected","Not logged In");
+                StaticHelpers.Alert("Error Detected", "Not logged In");
             }
             ShowWork(false);
         }
@@ -167,7 +167,7 @@ namespace MySharedClipboard
                 {
                     listBox2.Items.Add(filePath);
                 }
-                
+
             }
             ShowWork(false);
         }
@@ -181,6 +181,7 @@ namespace MySharedClipboard
         private async void copyRemoteToLocalbutton_Click(object sender, EventArgs e)
         {
             ShowWork(true);
+
             String SelectedItem = listBox2?.SelectedItem?.ToString();
             if (SelectedItem != null)
             {
@@ -206,7 +207,7 @@ namespace MySharedClipboard
             UpdateConnectedStateUx(false); // Update UI Menu
             label1.Text = ""; // Update UI Name
             checkBox1.Checked = false; // Update UI TextBox
-            StaticHelpers.Alert("OneDrive Status Changed","You have now signed out.");
+            StaticHelpers.Alert("OneDrive Status Changed", "You have now signed out.");
 
         }
 
@@ -341,6 +342,41 @@ namespace MySharedClipboard
             }
             ShowWork(false);
             getremotefilesbutton.PerformClick();
+        }
+
+        // Allow some right click options in text area
+
+        private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                contextMenuStrip1.Show();
+            }
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Cut();
+        }
+
+
+        void CopyAction(object sender, EventArgs e)
+        {
+            Clipboard.SetText(richTextBox1.SelectedText);
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                richTextBox1.Text
+                    += Clipboard.GetText(TextDataFormat.Text).ToString();
+            }
+        }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "";
         }
     }
 }
