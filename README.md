@@ -5,6 +5,7 @@ Current in devlopment but does work with Microsoft personal account or business 
 Current beta avilble: hosted on a backup of my personal web site.<br />
 https://backup.outlookme.eu/wp-content/uploads/mysharedclipboard/publish.htm 
 <br />
+
 ![alt text](https://outlookme.eu/wp-content/uploads/2021/01/2021-01-21_13-18-30.png)
 
 Lots to do including: 
