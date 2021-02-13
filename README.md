@@ -2,7 +2,6 @@
 <br />
 Current in devlopment but does work with Microsoft personal account or business account
 <br />
-Current beta avilble: hosted on a backup of my personal web site.<br />
 https://backup.outlookme.eu/wp-content/uploads/mysharedclipboard/publish.htm 
 <br />
 
