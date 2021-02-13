@@ -2,7 +2,7 @@
 <br />
 Current in devlopment but does work with Microsoft personal account or business account
 <br />
-https://backup.outlookme.eu/wp-content/uploads/mysharedclipboard/publish.htm 
+https://backup.outlookme.eu/my-github
 <br />
 
 ![alt text](https://outlookme.eu/wp-content/uploads/2021/01/2021-01-21_13-18-30.png)
