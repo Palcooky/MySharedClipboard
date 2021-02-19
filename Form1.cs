@@ -353,16 +353,16 @@ namespace MySharedClipboard
                 contextMenuStrip1.Show();
             }
         }
-
+        
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             richTextBox1.Cut();
         }
 
-
-        void CopyAction(object sender, EventArgs e)
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(richTextBox1.SelectedText);
+
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -378,5 +378,7 @@ namespace MySharedClipboard
         {
             richTextBox1.Text = "";
         }
+
+
     }
 }
