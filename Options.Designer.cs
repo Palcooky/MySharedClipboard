@@ -132,7 +132,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(192, 23);
             this.button1.TabIndex = 47;
-            this.button1.Text = "Local network Folder";
+            this.button1.Text = "Save Downloaded Files Location";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -149,7 +149,7 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(192, 23);
             this.button9.TabIndex = 51;
-            this.button9.Text = "Save Downloaded Files Location";
+            this.button9.Text = "Network Location";
             this.button9.UseVisualStyleBackColor = true;
             // 
             // label1
